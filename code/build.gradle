@@ -1,0 +1,47 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'org.springframework.boot' version '2.5.5'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'application'
+}
+
+version '1.0'
+sourceCompatibility = 11
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: 'me.soliveirajr', name: 'menta-regex', version: '0.9.5'
+    implementation 'org.jsoup:jsoup:1.11.3'
+    implementation "org.springframework.boot:spring-boot-starter-web"
+    implementation "org.springframework.boot:spring-boot-starter-thymeleaf"
+    implementation "org.springframework.boot:spring-boot-devtools"
+    implementation 'javax.xml.ws:jaxws-api:2.3.1'
+    implementation 'javax.jws:jsr181-api:1.0-MR1'
+    implementation group: 'com.google.code.gson', name: 'gson', version: '2.7'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+task runApp1(type: JavaExec) {
+    group = 'application'
+    description = 'Run the Spring MVC Application'
+    classpath = sourceSets.main.runtimeClasspath
+    main = 'springmvc.Application'
+}
+
+task runApp2(type: JavaExec) {
+    group = 'application'
+    description = 'Run the REST Application'
+    classpath = sourceSets.main.runtimeClasspath
+    main = 'dbmanager.DBGUIApp'
+}
